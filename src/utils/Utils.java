@@ -4,6 +4,7 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +26,8 @@ public class Utils {
 	 */
 	public static String lerArquivoComScanner(String arquivo) throws IOException{
 		StringBuilder sb = null;
-		try(Scanner scanner = new Scanner(arquivo)){
+		File file = new File(arquivo);
+		try(Scanner scanner = new Scanner(file)){
 			sb = new StringBuilder(0);
 			String line;
 			while (scanner.hasNext()) {
