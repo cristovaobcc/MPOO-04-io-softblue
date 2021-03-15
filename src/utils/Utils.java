@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 /**
  * Classes com funções utilitárias para leitura de arquivo.
@@ -15,6 +16,26 @@ import java.io.InputStream;
  *
  */
 public class Utils {
+	
+	/**
+	 * Lê o conteúdo de texto de um arquivo de texto.
+	 * @param arquivo Nome do arquivo
+	 * @return String o conteúdo de texto lido
+	 * @throws IOException
+	 */
+	public static String lerArquivoComScanner(String arquivo) throws IOException{
+		StringBuilder sb = null;
+		try(Scanner scanner = new Scanner(arquivo)){
+			sb = new StringBuilder(0);
+			String line;
+			while (scanner.hasNext()) {
+				line = scanner.nextLine();
+				sb.append(line);
+				sb.append("\n");
+			}
+		}
+		return sb.toString();
+	}
 	
 	/**
 	 * Lê o conteúdo de texto de um arquivo de texto.
