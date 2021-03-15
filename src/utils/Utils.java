@@ -48,7 +48,7 @@ public class Utils {
 	 * @return String o conteúdo de arquivo lido
 	 * @throws IOException
 	 */
-	public static String LerArquivoComoBytes(String arquivo, int bufferSize) throws IOException{
+	public static String lerArquivoComoBytes(String arquivo, int bufferSize) throws IOException{
 		String s = "";
 		
 		try(InputStream is = new FileInputStream(arquivo)){
