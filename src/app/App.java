@@ -1,17 +1,24 @@
 package app;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import utils.Utils;
+
 
 public class App {
 
 	public static void main(String[] args) throws IOException{
-		String s = Utils.LerArquivoComoBytes("entrada.txt", 10);
-
-		System.out.println(s);
-		System.out.println(s.length());
-
-
+		
+		// Classe apropriada para ler informações de texto
+		FileReader fr = new FileReader("entrada.txt");
+		
+		// Classe que lerá os dados como Strings
+		try (BufferedReader reader = new BufferedReader(fr)){
+			String line = reader.readLine();
+			System.out.println(line);
+		}
+		
+		fr.close();
 	}
 
 }
