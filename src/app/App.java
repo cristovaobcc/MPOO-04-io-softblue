@@ -14,8 +14,14 @@ public class App {
 		
 		// Classe que lerá os dados como Strings
 		try (BufferedReader reader = new BufferedReader(fr)){
-			String line = reader.readLine();
-			System.out.println(line);
+			
+			String s = "";
+			String line;
+			while((line = reader.readLine()) != null) {
+				s += line + "\n";
+			}
+						
+			System.out.println(s);
 		}
 		
 		fr.close();
