@@ -6,9 +6,11 @@ package utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Scanner;
 
 /**
@@ -17,6 +19,27 @@ import java.util.Scanner;
  *
  */
 public class Utils {
+	
+	/**
+	 * Cria um arquivo texto com o conteudo passado como parametro.
+	 * @param nomeArquivo String nome do arquivo
+	 * @param conteudo String conteudo do arquivo
+	 * @return true se o arquivo e conteudo foi criado e escrito com sucesso; falso, caso contrário.
+	 * @throws IOException
+	 */
+	public static boolean criaEEscreveArquivoTexto(String nomeArquivo, String conteudo) throws IOException {
+		boolean isEscrito = false;
+		
+		try (OutputStream os = new FileOutputStream(nomeArquivo)){
+		
+			byte[] buffer = conteudo.getBytes();
+			os.write(buffer);
+			isEscrito = true;
+		}
+		
+		return isEscrito;
+	}
+	
 	
 	/**
 	 * Lê o conteúdo de texto de um arquivo de texto.
