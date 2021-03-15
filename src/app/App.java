@@ -1,10 +1,8 @@
 package app;
 
-import java.io.FileOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-
-import utils.Utils;
 
 
 public class App {
@@ -12,10 +10,9 @@ public class App {
 	public static void main(String[] args) throws IOException{
 		
 		String s = "Texto para ser gravado no arquivo.";
-				
-		
-		if (Utils.criaEEscreveArquivoTexto("saida.txt", s)) {
-			System.out.println("Arquivo criado com sucesso.");
+		// Esta é uma forma mais simples de se trabalhar com escrita de arquivo texto.		
+		try(BufferedWriter writer = new BufferedWriter( new FileWriter("saida.txt"))){
+			writer.write(s);
 		}
 		
 		
