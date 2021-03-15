@@ -10,7 +10,7 @@ public class App {
 		// Lendo de arquivo de entrada
 		try (InputStream is = new FileInputStream("entrada.txt") ) {
 			// Para trabalharmos com Streams precisamos colocar os dados num array de bytes.
-			byte[] buffer = new byte[1024];
+			byte[] buffer = new byte[4];
 			// Colocar os bytes lidos do arquivo no array de bytes e verificando qtos
 			// bytes foram lidos.
 			int bytesLidos = is.read(buffer);
