@@ -4,13 +4,17 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -19,6 +23,34 @@ import java.util.Scanner;
  *
  */
 public class Utils {
+	
+	/**
+	 * Recebe um array de String e escreve no arquivo de destino o conteúdo de cada elemento 
+	 * do Array separado por "\n".
+	 * @param arquivoDestino String 
+	 * @param dados ArrayList< String >
+	 * @return true se o conteúdo todo do array de dados foi escrito; false, caso contrário.
+	 * @throws IOException
+	 */
+	public static boolean criaEEscreveArquivoTexto(String arquivoDestino, ArrayList<String> dados) 
+		throws IOException{
+		
+		boolean isEscrito = false;
+		
+		try(FileWriter fw = new FileWriter(arquivoDestino)){
+			
+			try(BufferedWriter writer =  new BufferedWriter(fw)){
+				for (String string : dados) {
+					writer.write(string);
+					writer.write("\n");
+				}
+				isEscrito = true;
+			}
+		}
+		
+		return isEscrito;
+		
+	}
 	
 	/**
 	 * Cria um arquivo texto com o conteudo passado como parametro.
