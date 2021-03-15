@@ -11,11 +11,14 @@ public class App {
 		try (InputStream is = new FileInputStream("entrada.txt") ) {
 			// Para trabalharmos com Streams precisamos colocar os dados num array de bytes.
 			byte[] buffer = new byte[4];
-			// Colocar os bytes lidos do arquivo no array de bytes e verificando qtos
-			// bytes foram lidos.
-			int bytesLidos = is.read(buffer);
-			// Constructs a new String by decoding the specified array of bytes using the platform's default charset
-			String s = new String(buffer, 0, bytesLidos);
+			
+			// Lendo os dados de entrada em pedaços.
+			String s = "";
+			int bytesLidos;
+			while((bytesLidos = is.read(buffer)) > -1 ) {
+				s += new String(buffer, 0, bytesLidos);
+			}
+			
 			System.out.println(s);
 			System.out.println(s.length());
 		} 
