@@ -16,6 +16,7 @@ public class App {
 			// Constructs a new String by decoding the specified array of bytes using the platform's default charset
 			String s = new String(buffer);
 			System.out.println(s);
+			System.out.println(s.length());
 		} 
 
 	}
