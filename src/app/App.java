@@ -1,5 +1,6 @@
 package app;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,10 +27,21 @@ public class App {
 //		OutputStream cout = System.out; // Veja que System.out é uma outputStream (vide javadoc)
 //		transfer(fin, cout);
 		
-		// Gravando o que é digitado no console em um arquivo.
-		InputStream cin = System.in;
-		OutputStream fout = new FileOutputStream("saida.txt");
-		transfer(cin, fout);
+		
+//		// Gravando o que é digitado no console em um arquivo.
+//		InputStream cin = System.in;
+//		OutputStream fout = new FileOutputStream("saida.txt");
+//		transfer(cin, fout);
+		
+		
+		// Lendo do arquivo de entrada e o destino é uma string na App.
+		FileInputStream fin = new FileInputStream("entrada.txt");
+		ByteArrayOutputStream bout = new ByteArrayOutputStream(); // Array de bytes de destino. Leia o javadoc de ByteArrayOutputStream!
+		transfer(fin, bout);
+		
+		byte[] bytes = bout.toByteArray();
+		String s = new String(bytes);
+		System.out.println(s);
 		
 	}
 	
