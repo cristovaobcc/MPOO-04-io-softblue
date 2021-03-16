@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -23,6 +24,33 @@ import java.util.Scanner;
  *
  */
 public class Utils {
+	
+	/**
+	 * Insere os elementos de dados separados por quebra de linha("\n") no arquivo passado como
+	 * parâmetro.
+	 * @param arquivo String
+	 * @param dados ArrayList< String > 
+	 * @return true, se todos os elementos de dados forma inseridos no arquivo; false, do contrário.
+	 * @throws IOException
+	 */
+	public static boolean criaEEscreveComPrintWriter(String arquivo, ArrayList<String> dados)
+		throws IOException{
+		
+		boolean isEscrito = false;
+		
+		try(FileWriter fw = new FileWriter(arquivo)){
+			
+			try(PrintWriter pw = new PrintWriter(fw)){
+				for (String string : dados) {
+					pw.println(string);
+				}
+				
+				isEscrito = true;
+			}
+		}
+		
+		return isEscrito;
+	}
 	
 	/**
 	 * Recebe um array de String e escreve no arquivo de destino o conteúdo de cada elemento 
