@@ -1,2 +1,1 @@
-Texto para ser gravado no arquivo.
-Segundo texto para ser gravado
+Texto para ser gravado no arquivo!
