@@ -20,12 +20,17 @@ public class App {
 //		transfer(fin, fout); // usando um cast implícito para o método;
 		
 		
-		// Usando o mesmo arquivo de entrada.txt para ser exibida no 
-		// console.
-		FileInputStream fin = new FileInputStream("entrada.txt");
-		OutputStream cout = System.out; // Veja que System.out é uma outputStream (vide javadoc)
-		transfer(fin, cout);
-		 
+//		// Usando o mesmo arquivo de entrada.txt para ser exibida no 
+//		// console.
+//		FileInputStream fin = new FileInputStream("entrada.txt");
+//		OutputStream cout = System.out; // Veja que System.out é uma outputStream (vide javadoc)
+//		transfer(fin, cout);
+		
+		// Gravando o que é digitado no console em um arquivo.
+		InputStream cin = System.in;
+		OutputStream fout = new FileOutputStream("saida.txt");
+		transfer(cin, fout);
+		
 	}
 	
 	// transfere dados de uma stream de entrada para uma stream de saída.
