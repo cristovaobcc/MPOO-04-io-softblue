@@ -26,6 +26,37 @@ import java.util.Scanner;
 public class Utils {
 	
 	/**
+	 * Copia dados de arquivo de origem para o de destino
+	 * @param origem String
+	 * @param destino String
+	 * @return true, se foi copiado com sucesso; false, caso contrário.
+	 * @throws IOException
+	 */
+	public static boolean copiaArquivo(String origem, String destino) 
+		throws IOException{
+		boolean isCopiado = false;
+		
+		try(InputStream inputStream = new FileInputStream(origem);
+				OutputStream outputStream = new FileOutputStream(destino)){
+			
+			byte[] buffer = new byte[1024];
+			
+			int bytesLidos = inputStream.read(buffer);
+			
+			if (bytesLidos > -1) {
+				
+				do {
+					outputStream.write(buffer, 0, bytesLidos);
+					bytesLidos = inputStream.read(buffer);
+				} while (bytesLidos > -1);
+				
+				isCopiado = true;
+			} 
+		}
+		
+		return isCopiado;
+	}
+	/**
 	 * Insere os elementos de dados separados por quebra de linha("\n") no arquivo passado como
 	 * parâmetro.
 	 * @param arquivo String
