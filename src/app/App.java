@@ -1,8 +1,12 @@
 package app;
 
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -13,18 +17,23 @@ public class App {
 
 	public static void main(String[] args) throws IOException{
 		
-		String s1 = "Texto para ser gravado no arquivo!";
-		String s2 = "Novo texto para ser gravado.";
+		// Criando cópias de arquivos textos ou binários.
+		String inputFile = "entrada.txt";
+		String outputFile = "saida.txt";
 		
-		ArrayList<String> dados = new ArrayList<String>();
-		dados.add(s1);
-		dados.add(s2);
-		
-		if (Utils.criaEEscreveComPrintWriter("saida.txt", dados)) {
-			System.out.println("Arquivo criado com exito!");
-		}
-		
+		try (InputStream inputStream = new FileInputStream(inputFile);
+				OutputStream outputStream = new FileOutputStream(outputFile)){
 			
+			// Armazenando os dados em um buffer
+			byte[] buffer = new byte[1024];
+			int bytesLidos;
+			
+			while((bytesLidos = inputStream.read(buffer)) > -1) {
+				// Insere os dados lidos da posição 0 até bytesLidos. Isso evita pegar lixo.
+				outputStream.write(buffer, 0, bytesLidos); 
+			}
+			
+		}
 		
 	}
 
