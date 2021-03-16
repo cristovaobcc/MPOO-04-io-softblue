@@ -26,6 +26,34 @@ import java.util.Scanner;
 public class Utils {
 	
 	/**
+	 * Transfere os dados de origem in para um destino out. Não há fechamento
+	 * dos InputStream ou OutputStream passados como parâmetros.
+	 * @param in InputStream
+	 * @param out OutputStream
+	 * @return true, se os dados foram transferidos; falso, caso contrário.
+	 */
+	public static boolean transferData(InputStream in, OutputStream out) 
+		throws IOException{
+		
+		boolean isCopiado = false;
+		byte[] buffer = new byte[1024];
+		
+		int bytesLidos = in.read(buffer);
+		
+		if(bytesLidos > -1) {
+			do {
+				out.write(buffer, 0, bytesLidos);
+				bytesLidos = in.read(buffer);
+			}while(bytesLidos > -1);
+			
+			isCopiado = true;
+		}
+		
+		return isCopiado;
+	}
+	
+	
+	/**
 	 * Copia dados de arquivo de origem para o de destino
 	 * @param origem String
 	 * @param destino String
