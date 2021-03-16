@@ -21,19 +21,8 @@ public class App {
 		String inputFile = "entrada.txt";
 		String outputFile = "saida.txt";
 		
-		try (InputStream inputStream = new FileInputStream(inputFile);
-				OutputStream outputStream = new FileOutputStream(outputFile)){
-			
-			// Armazenando os dados em um buffer
-			byte[] buffer = new byte[1024];
-			int bytesLidos;
-			
-			while((bytesLidos = inputStream.read(buffer)) > -1) {
-				// Insere os dados lidos da posição 0 até bytesLidos. Isso evita pegar lixo.
-				outputStream.write(buffer, 0, bytesLidos); 
-			}
-			
-		}
+		if (Utils.copiaArquivo(inputFile, outputFile))
+			System.out.println("Cópia realizada com sucesso.");
 		
 	}
 
