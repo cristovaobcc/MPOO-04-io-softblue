@@ -12,14 +12,20 @@ public class App {
 
 	public static void main(String[] args) throws IOException{
 		
-		// Polimorfismo com API de I/O
-		// Fazendo transferência de dados entre arquivos:
+//		// Polimorfismo com API de I/O
+//		// Fazendo transferência de dados entre arquivos:
+//		FileInputStream fin = new FileInputStream("entrada.txt");
+//		FileOutputStream fout = new FileOutputStream("saida.txt");
+//		
+//		transfer(fin, fout); // usando um cast implícito para o método;
+		
+		
+		// Usando o mesmo arquivo de entrada.txt para ser exibida no 
+		// console.
 		FileInputStream fin = new FileInputStream("entrada.txt");
-		FileOutputStream fout = new FileOutputStream("saida.txt");
-		
-		transfer(fin, fout); // usando um cast implícito para o método;
-		
-		
+		OutputStream cout = System.out; // Veja que System.out é uma outputStream (vide javadoc)
+		transfer(fin, cout);
+		 
 	}
 	
 	// transfere dados de uma stream de entrada para uma stream de saída.
